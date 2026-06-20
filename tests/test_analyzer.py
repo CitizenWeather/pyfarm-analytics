@@ -176,9 +176,11 @@ class TestAnomalyDetection:
     @pytest.mark.asyncio
     async def test_out_of_range_reading_flagged(self):
         """A reading that is far from the mean should be detected as an anomaly."""
-        # 9 normal readings + 1 extreme outlier
-        readings = [_make_reading("temperature", 22.0, float(i)) for i in range(9)]
-        readings.append(_make_reading("temperature", 100.0, 9))  # extreme outlier
+        # 29 normal readings + 1 extreme outlier. With population std a single
+        # outlier's z-score is bounded by sqrt(n-1), so n must be > 10 for an
+        # outlier to exceed a threshold of 3.0.
+        readings = [_make_reading("temperature", 22.0, float(i)) for i in range(29)]
+        readings.append(_make_reading("temperature", 100.0, 29))  # extreme outlier
 
         storage = MockStorageBackend(env_readings=readings)
         analyzer = Analyzer(storage)
@@ -208,8 +210,10 @@ class TestAnomalyDetection:
     @pytest.mark.asyncio
     async def test_anomaly_record_fields(self):
         """AnomalyRecord should carry correct metadata."""
-        readings = [_make_reading("temperature", 22.0, float(i)) for i in range(9)]
-        readings.append(_make_reading("temperature", 200.0, 9))
+        # n > 10 required so the single outlier's z-score can exceed 3.0
+        # (population-std z-score is bounded by sqrt(n-1)).
+        readings = [_make_reading("temperature", 22.0, float(i)) for i in range(29)]
+        readings.append(_make_reading("temperature", 200.0, 29))
 
         storage = MockStorageBackend(env_readings=readings)
         analyzer = Analyzer(storage)

@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from pyfarm.storage import get_backend
+from pyfarm.core.storage import get_backend
 
 from pyfarm.analytics.analyzer import Analyzer
 from pyfarm.analytics.models import (

@@ -10,7 +10,7 @@ import numpy as np
 from pyfarm.analytics.models import NutrientDriftRecord
 
 if TYPE_CHECKING:
-    from pyfarm.storage.backend import StorageBackend
+    from pyfarm.core.storage import StorageBackend
 
 # Metric identifiers as stored in sensor readings
 _METRIC_PH = "ph"
