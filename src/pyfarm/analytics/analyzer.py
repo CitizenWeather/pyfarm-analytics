@@ -13,9 +13,10 @@ from pyfarm.analytics.models import (
     KPIDashboard,
     NutrientDriftRecord,
 )
+from pyfarm.core.storage import StorageBackend
 
 if TYPE_CHECKING:
-    from pyfarm.storage.backend import StorageBackend
+    pass
 
 
 class Analyzer:
