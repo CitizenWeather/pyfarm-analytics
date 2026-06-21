@@ -7,7 +7,7 @@ pyfarm-api (dashboard routes).
 Quick start::
 
     from pyfarm.analytics import Analyzer
-    from pyfarm.storage import get_backend
+    from pyfarm.core.storage import get_backend
 
     storage = get_backend()
     analyzer = Analyzer(storage)

@@ -10,7 +10,7 @@ import numpy as np
 from pyfarm.analytics.models import AnomalyRecord, EnvironmentSummary
 
 if TYPE_CHECKING:
-    from pyfarm.storage.backend import StorageBackend
+    from pyfarm.core.storage import StorageBackend
 
 # Sensor metric name constants (matched against SensorReading.metric)
 _METRIC_TEMP = "temperature"

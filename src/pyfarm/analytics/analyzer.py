@@ -27,11 +27,11 @@ class Analyzer:
 
     Args:
         storage: Any object conforming to the ``StorageBackend`` protocol
-                 (from ``pyfarm.storage``).
+                 (from ``pyfarm.core.storage``).
 
     Example::
 
-        from pyfarm.storage import get_backend
+        from pyfarm.core.storage import get_backend
         from pyfarm.analytics import Analyzer
 
         storage = get_backend()
